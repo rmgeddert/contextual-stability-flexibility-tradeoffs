@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html >
+  <head>
+    <title>Task Switching Experiment</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/common/jquery-3.4.1.js"></script>
+    <script src="js/common/underscore_min.js"></script>
+    <!-- task related scripts -->
+    <script src="js/task/counterbalancing.js"></script>
+    <script src="js/task/instructions.js"></script>
+    <script src="js/task/prepareTask.js"></script>
+    <script src="js/task/tasks.js"></script>
+    <script src="js/task/miscFunctions.js"></script>
+    <script src="js/task/images.js"></script>
+    <script src="js/task/main.js"></script>
+    <!-- demographics, data submission, etc -->
+    <script src ="js/experimentWrapper.js"></script>
+  </head>
+
+  <body>
+    <div id="demographicsForm">
+      <p><b>Welcome to the experiment!</b> Thank you for your participation.</p>
+      <p>Please take a few seconds to answer the demographic questions below:</p>
+
+    	<p class="selectTitle"> <b>Gender:</b> </p>
+    	<select class="demoSelect" id="gender" onchange="demoChange()">
+        <option value="Blank"></option>
+    		<option value="F">Female</option>
+    		<option value="M">Male</option>
+    		<option value="NA">Do not wish to respond</option>
+    	</select>
+
+    	<p class="selectTitle"><b>Age:</b> <span style="font-size: 20px">(Leave blank if you do not wish to respond)</span></p>
+	    <input class="demoSelect" id="age" name="Age" value=""></input>
+
+    	<p class="selectTitle"><b>Ethnicity:</b></p>
+    	<select class="demoSelect" id="ethnicity" onchange="demoChange()">
+        <option value="Blank"></option>
+    		<option value="HL">Hispanic/Latino</option>
+    		<option value="NHL">Non-Hispanic/Latino</option>
+    		<option value="NA">Do not wish to respond</option>
+    	</select>
+
+    	<p class="selectTitle"><b>Race:</b></p>
+    	<select class="demoSelect" id="race" onchange="demoChange()">
+        <option value="Blank"></option>
+    		<option value="AI">American Indian/Alaska Native</option>
+    		<option value="A">Asian</option>
+    		<option value="NH">Native Hawaiian/Other Pacific Islander</option>
+    		<option value="AA">African Ameirican/Black</option>
+    		<option value="W">Caucasian/White</option>
+    		<option value="M">Multiracial</option>
+    		<option value="O">Other</option>
+    		<option value="NA">Do not wish to respond</option>
+    	</select>
+      <br>
+      <br>
+    	<button id="demographicSubmit">Submit</button>
+    </div>
+    <table id="table">
+      <tr>
+        <td>
+          <p id="instruction" style="font-family: arial; font-size: 40px;"></p>
+          <p id="NoGo" style="font-family: arial; color: black; font-size: 40px;"></p>
+          <form id="mturk_form" method="POST" action="https://dibs-web01.vm.duke.edu/AMTSubmit/DataHandler_MTurk_RG.php">
+            <!-- <form id="mturk_form" method="POST" action="https://workersandbox.mturk.com/mturk/externalSubmit"> -->
+            <!-- <form id="mturk_form" method="POST" action="https://wwww.mturk.com/mturk/externalSubmit"> -->
+            <input type="hidden" id="assignmentId" name="assignmentId" value="">
+            <input type="hidden" id="workerId" name="workerId" value="">
+            <input type="hidden" id="hitId" name="hitId" value="">
+            <input type="hidden" id="RTs" name="RTs" value="">
+            <input type="hidden" id="demographics" name="demographics" value="">
+            <input type="hidden" id="ExpName" name="ExpName" value="SF_Sequence2">
+            <p style="font-size:22px; margin-left: 50px; margin-right:50px;">
+              Thank you for participating in this study. In this particular experiment, we were looking to see how the interference caused by switching between tasks was influenced by overlapping keys being used for both task simultaneously, and how this interference did or did not relate to the interference caused by having to switch between the magnitude and parity tasks.
+            </p>
+            <p style="font-size:22px; margin-left: 50px; margin-right:50px;">
+              If you would like to know more about or have any other questions about this experiment or your data, please feel free to contact me at rmg55@duke.edu. Thank you so much for your participation!
+            </p>
+            <p style="font-size:24px">
+              Please click the "Submit" button to submit your data.
+            </p>
+            <input id="submitButton" type="submit" name="Finish" value="Submit">
+          </form>
+        </td>
+      </tr>
+    </table>
+    <!-- instruction elements for all text screens -->
+    <div id="instructionsDiv">
+      <div class="instruction-content">
+        <div class="instruction-header">
+          <h1 style="font-size: 40px;">Instructions </h1>
+          <p style="font-size: 22px; font-weight: bold">Please read these instructions carefully.</p>
+        </div>
+        <div class="instruction-body">
+          <p id="instructions1" ></p>
+          <p id="instructions2" ></p>
+          <p id="instructions3" ></p>
+          <p id="instructions4" ></p>
+          <p id="instructions5" ></p>
+          <p id="instructions6" ></p>
+          <p id="instructions7" ></p>
+          <p id="instructions8" ></p>
+          <p id="instructions9" ></p>
+        </div>
+        <div class="instruction-buttons">
+          <button id="nextInstrButton">Next</button>
+          <button id="startExpButton">Start Experiment</button>
+          <button id="nextSectionButton">Next Section</button>
+        </div>
+      </div>
+    </div>
+    <div class="canvasas">
+      <canvas id="taskCanvas" width="800" height="600"></canvas>
+    </div>
+  </body>
+</html>
